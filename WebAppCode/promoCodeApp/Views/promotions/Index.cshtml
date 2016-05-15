@@ -1,0 +1,69 @@
+﻿@model IEnumerable<promoCodeApp.Models.promotion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.gamePackage.packageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.endDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.promotionCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isRedeemed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isActive)
+        </th> 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.gamePackage.packageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.endDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.promotionCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isRedeemed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isActive)
+        </td> 
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.promotionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.promotionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.promotionId })
+        </td>
+    </tr>
+}
+
+</table>

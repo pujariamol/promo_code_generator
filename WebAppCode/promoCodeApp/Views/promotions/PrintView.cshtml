@@ -1,0 +1,293 @@
+﻿
+
+
+
+<style>
+    .cardContainer {
+        width: 3.5in;
+        height: 2in;
+        background-size: 3.5in 2in;
+        border: solid 1px black;
+        float: left;
+        margin: 5px;
+        background-image: url('../../Content/img/images.jpeg');
+        padding: 5px;
+    }
+
+    .companyName {
+        /*position: relative;*/
+        font-size: 22px;
+        left: -10px;
+        color: white;
+        align: left;
+    }
+
+    .promoCode {
+        position: relative;
+        font-size: 18px;
+        color: yellow;
+    }
+
+    .companyLogo {
+        height: 110px;
+        width: 110px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+
+    #dropZoneLogo {
+        background: #A8A8A8;
+        border: black dashed 3px;
+        padding: 50px;
+        text-align: center;
+        color: white;
+    }
+
+    #dropZoneBackgrounds {
+        background: #A8A8A8;
+        border: black dashed 3px;
+        padding: 50px;
+        text-align: center;
+        color: white;
+    }
+</style>
+
+
+
+
+
+
+<div class="top-content">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="form-box">
+                        <div id="mydiv">
+                            <div class="cardContainer" id="cardContainer">
+                                <img src="" class="companyLogo" id="companyLogoImg" />
+                                <p><b><label class="companyName" id="companyNameLbl"></label></b></p>
+                                <p><b> <label class="promoCode" id="promoCodeLbl"></label></b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-1 middle-border"></div>
+                <div class="col-sm-1"></div>
+
+
+                @*<div class="col-sm-5">
+                        <div class="form-box">
+                            <div class="form-bottom">
+
+                                <input type="hidden" name="cardBackgroundImgPath" id="cardBackgroundImgPath" value="images.jpeg" onchange="onCardBgImgPathChange(this)">
+                                <input type="hidden" name="companyLogoImgPath" id="companyLogoImgPath" value="companyLogo.png" onchange="onCompanyLogoImgPathChange(this)">
+
+                                <form id="myForm" action="" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label class="btn btn-info" for="cardBackgroundSelector">
+                                            <input id="cardBackgroundSelector" class="cardBackgroundSelector" type="file" accept="image/*" />
+                                            Upload Card Background
+                                        </label>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="btn btn-info" for="companyLogoSelector">
+                                            <input id="companyLogoSelector" class="companyLogoSelector" type="file" accept="image/*" />
+                                            Upload Company Logo Image
+                                        </label>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="companyName">Company name</label>
+                                        <input type="text" style="color:black" name="companyName" placeholder="Company name..." class="companyName form-control" id="companyName" onkeyup="onCompanyNameChange(this)">
+                                    </div>
+                                    <button type="button" class="btn" onclick="PrintContent('mydiv')">Print</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+
+
+            <input type="hidden" name="cardBackgroundImgPath" id="cardBackgroundImgPath" value="images.jpeg" onchange="onCardBgImgPathChange(this)">
+            <input type="hidden" name="companyLogoImgPath" id="companyLogoImgPath" value="companyLogo.png" onchange="onCompanyLogoImgPathChange(this)">
+
+
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="form-group">
+
+                        <div id="dropZoneBackgrounds">Drop your Background image here</div>
+
+
+                    </div>
+                </div>
+                <div class="col-lg-5">
+
+                    <div id="dropZoneLogo">Drop your Logo image here</div>
+
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <div class="row">
+                <div class="form-group col-lg-5">
+                    <label class="sr-only" for="companyName">Company name</label>
+                    <input type="text" style="color:black" name="companyName" placeholder="Company name..." class="companyName form-control" id="companyName" onkeyup="onCompanyNameChange(this)">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="PrintContent('mydiv')">Print</button>
+            </div>
+
+        </div>
+
+        <div id="filesAndPath">
+
+        </div>
+
+        <div id="attachCaseFilesAndPath">
+
+        </div>
+
+    </div>
+
+
+    @section Scripts{
+
+
+
+        <script type="text/javascript">
+
+            document.getElementById("companyLogoImg").src = "../../Content/img/companyLogo.png";
+            document.getElementById("companyNameLbl").innerHTML = "Electronic Arts";
+            document.getElementById("promoCodeLbl").innerHTML = "<< promo-code >>";
+
+            function PrintContent(divName) {
+
+                var DocumentContainer = document.getElementById(divName);
+
+                var WindowObject = window.open('', 'PrintWindow', 'width=750,height=650,top=50,left=50,toolbars=no,scrollbars=yes,status=no,resizable=yes');
+
+                WindowObject.document.writeln("<html><head><title>Print promo cards</title>");
+                WindowObject.document.writeln("<style> .cardContainer {width: 3.5in;height: 2in; background-image: url('" + document.getElementById('cardBackgroundImgPath').value + "');background-size: 3.5in 2in; border: solid 1px black; float:left; margin:4px;padding:0px;} .companyName{position: relative;font-size:22px;left: -10px;color:white;align:left;} .promoCode{position: relative;font-size:18px;color:yellow;} .companyLogo{height:110px;width:110px;position: relative;top: 0px;left: 0px;}</style>");
+
+                WindowObject.document.writeln("</head><body>");
+
+                var promoArray = ["76DF2T", "UI5H6WE", "TY23h1T", "76DF2T", "UI5H6WE", "TY23h1T"];
+
+                for (var i = 0; i <= promoArray.length; i++) {
+                    WindowObject.document.writeln("<div style='text-align:center'>");
+                    WindowObject.document.writeln(DocumentContainer.innerHTML);
+                    WindowObject.document.writeln("</div>");
+                    document.getElementById("promoCodeLbl").innerHTML = promoArray[i];
+                }
+
+                document.getElementById('companyLogoImg').src = document.getElementById("companyLogoImgPath").value;
+
+                var companyName = document.getElementById("companyName").value;
+                if (companyName != "") {
+                    document.getElementById("companyNameLbl").innerHTML = document.getElementById("companyName").value;
+                }
+
+                WindowObject.document.writeln("</body></html>");
+                WindowObject.document.close();
+                WindowObject.focus();
+                WindowObject.print();
+                WindowObject.close();
+                document.getElementById("promoCodeLbl").innerHTML = "<< promo-code >>";
+            }
+
+            function onCompanyLogoImgPathChange(obj) {
+                document.getElementById('companyLogoImg').src = obj.value;
+            }
+
+            function onCompanyNameChange(obj) {
+                document.getElementById('companyNameLbl').innerHTML = obj.value;
+            }
+
+            function onCardBgImgPathChange(obj) {
+                alert(obj.value);
+                document.getElementById('cardContainer').style.backgroundImage = obj.value;
+            }
+
+
+
+
+
+
+            $(function () {
+
+                var fileCount = 0;
+
+                $('#dropZoneBackgrounds').filedrop({
+                    url: '@Url.Action("UploadFiles")',
+                    paramname: 'file',
+                    maxFiles: 5,
+                    dragOver: function () {
+                        $('#dropZoneBackgrounds').css('background', 'blue');
+                    },
+                    dragLeave: function () {
+                        $('#dropZoneBackgrounds').css('background', 'gray');
+                    },
+                    drop: function () {
+                        $('#dropZoneBackgrounds').css('background', 'gray');
+                    },
+                    afterAll: function () {
+                        $('#dropZoneBackgrounds').html('File was uploaded please check upload result');
+                    },
+                    uploadFinished: function (i, file, response, time) {
+                        fileCount++;
+
+                        if (response.error == 0) { 
+                             $('#cardContainer').css("background", "url("+response.message+") no-repeat");
+                            
+                             
+                        } 
+                    }
+                });
+            });
+
+
+            $(function () {
+
+                var fileCount = 0;
+
+                $('#dropZoneLogo').filedrop({
+                    url: '@Url.Action("UploadFiles")',
+                    paramname: 'file',
+                    maxFiles: 5,
+                    dragOver: function () {
+                        $('#dropZoneLogo').css('background', 'blue');
+                    },
+                    dragLeave: function () {
+                        $('#dropZoneLogo').css('background', 'gray');
+                    },
+                    drop: function () {
+                        $('#dropZoneLogo').css('background', 'gray');
+                    },
+                    afterAll: function () {
+                        $('#dropZoneLogo').html('File was uploaded please check upload result');
+                    },
+                    uploadFinished: function (i, file, response, time) {
+                        fileCount++;
+
+                        console.log(file)
+                        console.log(response)
+
+                        if (response.error == 0) {
+                            $('#companyLogoImg').attr('src', response.message   );  
+                        }
+                    }
+                });
+            });
+
+        </script>
+
+
+        <script src="@Url.Content("~/Scripts/jquery.filedrop.js")" type="text/javascript"></script>
+    }

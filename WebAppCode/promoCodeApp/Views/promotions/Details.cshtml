@@ -1,0 +1,83 @@
+﻿@model promoCodeApp.Models.promotion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>promotion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.gamePackage.packageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gamePackage.packageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.promotionCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.promotionCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isRedeemed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isRedeemed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.promotionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

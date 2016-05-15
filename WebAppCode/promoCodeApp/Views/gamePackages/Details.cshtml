@@ -1,0 +1,52 @@
+﻿@model promoCodeApp.Models.gamePackage
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>gamePackage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.game.gameName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.game.gameName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.packageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.packageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.secretKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.secretKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isActive)
+        </dd>
+
+        
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.gamePackageId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

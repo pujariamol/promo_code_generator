@@ -1,0 +1,40 @@
+﻿@model IEnumerable<promoCodeApp.Models.registration>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.registrationName)
+        </th> 
+        <th>
+            @Html.DisplayNameFor(model => model.clientServerKey)
+        </th> 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.registrationName)
+        </td> 
+        <td>
+            @Html.DisplayFor(modelItem => item.clientServerKey)
+        </td> 
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.registrationId })
+            |
+            @Html.ActionLink("Delete", "Delete", new { id = item.registrationId })
+        </td>
+    </tr>
+}
+
+</table>

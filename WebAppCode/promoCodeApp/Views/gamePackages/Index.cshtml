@@ -1,0 +1,52 @@
+﻿@model IEnumerable<promoCodeApp.Models.gamePackage>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.game.gameName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.packageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.secretKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isActive)
+        </th> 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.game.gameName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.packageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.secretKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isActive)
+        </td> 
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.gamePackageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.gamePackageId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.gamePackageId })
+        </td>
+    </tr>
+}
+
+</table>
