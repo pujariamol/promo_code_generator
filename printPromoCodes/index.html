@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Generate Promo Code</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+       
+        <style>
+            .cardContainer {
+                width: 3.5in;
+                height: 2in; 
+                background-image: url('./images.jpeg');
+                background-size: 3.5in 2in; 
+                border: solid 1px black;
+                float: left; 
+                margin:5px;
+                padding:5px;
+            }
+            .companyName{
+                /*position: relative;*/
+                font-size:22px;
+                left: -10px;
+                color:white;
+                align:left;
+            }
+            .promoCode{
+                position: relative;
+                font-size:18px;
+                color:yellow;
+            }
+            .companyLogo{
+                height:110px;width:110px;
+                position: relative;
+                top: 0px;
+                left: 0px;
+            }
+        </style>
+        
+
+    </head>
+
+    <body>
+        <!-- Top content -->
+        <div class="top-content">
+            <div class="inner-bg">
+                <div class="container">
+                	<div class="row">
+                        <div class="col-sm-5">
+                        	<div class="form-box">
+                                 <div id="mydiv">
+                                    <div class="cardContainer" id="cardContainer">
+                                        <img src="" class="companyLogo" id="companyLogoImg"> </img>
+                                        <p><b><label class="companyName" id="companyNameLbl"></label></b></p>
+                                        <p><b> <label class="promoCode" id="promoCodeLbl"></label></b></p>
+                                    </div>
+                                </div>
+		                    </div>
+		                </div>
+                        
+                        <div class="col-sm-1 middle-border"></div>
+                        <div class="col-sm-1"></div>
+                        	
+                        <div class="col-sm-5">
+                        	
+                        	<div class="form-box">
+	                            <div class="form-bottom">
+                                    
+                                    <input type="hidden" name="cardBackgroundImgPath" id="cardBackgroundImgPath" value="images.jpeg" onchange="onCardBgImgPathChange(this)">
+                                    <input type="hidden" name="companyLogoImgPath" id="companyLogoImgPath" value="companyLogo.png" onchange="onCompanyLogoImgPathChange(this)">
+
+
+                                    <form id="myForm" action="" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                             <label class="btn btn-info" for="cardBackgroundSelector">
+                                                <input id="cardBackgroundSelector" class="cardBackgroundSelector" type="file"  accept="image/*"/>
+                                                Upload Card Background
+                                            </label>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="btn btn-info" for="companyLogoSelector">
+                                                <input id="companyLogoSelector" class="companyLogoSelector" type="file" accept="image/*"/>
+                                                Upload Company Logo Image
+                                            </label>
+                                            
+                                        </div>
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="companyName">Company name</label>
+				                        	<input type="text" name="companyName" placeholder="Company name..." class="companyName form-control" id="companyName" onkeyup="onCompanyNameChange(this)">
+				                        </div>
+				                        <button type="button" class="btn" onclick="PrintContent('mydiv')">Print</button>
+                                </form>
+			                    </div>
+                        	</div>
+                        	
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer>
+        	<div class="container">
+        		<div class="row">
+        			
+        			<div class="col-sm-8 col-sm-offset-2">
+        				<div class="footer-border"></div>
+        				
+        			</div>
+        			
+        		</div>
+        	</div>
+        </footer>
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+
+            document.getElementById("companyLogoImg").src = "companyLogo.png";
+            document.getElementById("companyNameLbl").innerHTML = "Electronic Arts";
+            document.getElementById("promoCodeLbl").innerHTML = "<< promo-code >>";
+
+            function PrintContent(divName) {
+
+                var DocumentContainer = document.getElementById(divName);
+               
+                var WindowObject = window.open('', 'PrintWindow', 'width=750,height=650,top=50,left=50,toolbars=no,scrollbars=yes,status=no,resizable=yes');
+
+                WindowObject.document.writeln("<html><head><title>Print promo cards</title>");
+                WindowObject.document.writeln("<style> .cardContainer {width: 3.5in;height: 2in; background-image: url('" + document.getElementById('cardBackgroundImgPath').value + "');background-size: 3.5in 2in; border: solid 1px black; float:left; margin:4px;padding:0px;} .companyName{position: relative;font-size:22px;left: -10px;color:white;align:left;} .promoCode{position: relative;font-size:18px;color:yellow;} .companyLogo{height:110px;width:110px;position: relative;top: 0px;left: 0px;}</style>");
+
+                WindowObject.document.writeln("</head><body>");
+
+                var promoArray = ["76DF2T","UI5H6WE", "TY23h1T","76DF2T","UI5H6WE", "TY23h1T"];        
+
+                for(var i=0; i <= promoArray.length; i++){
+                    WindowObject.document.writeln("<div style='text-align:center'>");
+                    WindowObject.document.writeln(DocumentContainer.innerHTML);
+                    WindowObject.document.writeln("</div>");
+                    document.getElementById("promoCodeLbl").innerHTML = promoArray[i];
+                }
+
+                document.getElementById('companyLogoImg').src = document.getElementById("companyLogoImgPath").value;
+                
+                var companyName = document.getElementById("companyName").value;
+                if(companyName != ""){
+                    document.getElementById("companyNameLbl").innerHTML = document.getElementById("companyName").value;
+                }
+
+                WindowObject.document.writeln("</body></html>");
+                WindowObject.document.close();
+                WindowObject.focus();
+                WindowObject.print();
+                WindowObject.close();
+                document.getElementById("promoCodeLbl").innerHTML = "<< promo-code >>";
+            }
+
+            function onCompanyLogoImgPathChange(obj){
+               document.getElementById('companyLogoImg').src =  obj.value;
+            }
+
+            function onCompanyNameChange(obj){
+                document.getElementById('companyNameLbl').innerHTML =  obj.value;
+            }    
+
+            function onCardBgImgPathChange(obj){
+                document.getElementById('cardContainer').style.backgroundImage =  obj.value;
+            }
+
+        </script>
+    </body>
+
+</html>
